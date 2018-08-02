@@ -1,0 +1,25 @@
+@import "~styles/colors";
+@import "~styles/fonts";
+
+.FadeIn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  @include defaultFont;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .item {
+    border-radius: 3px;
+    padding: 10px;
+    background: $secondary;
+    color: white;
+    margin: 5px;
+    display: block;
+  }
+}

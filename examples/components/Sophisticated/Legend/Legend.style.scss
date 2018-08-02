@@ -1,0 +1,41 @@
+@import "~styles/colors";
+// @import "~styles/fonts";
+// @import "~styles/transitions";
+
+.Legend {
+
+  .arrow {
+    stroke: $primary;
+    stroke-width: 3;
+    fill: transparent;
+    opacity: inherit;
+  }
+
+  .label {
+    // @include defaultFont;
+    fill: $primary;
+    font-size: 3em;
+    opacity: inherit;
+  }
+
+  .subLabel {
+    // @include defaultFont;
+    fill: $primary;
+    font-size: 2.1em;
+    opacity: inherit;
+  }
+
+  /* &:hover, &.active {
+    .arrow {
+      stroke: $primary_hue1;
+    }
+
+    .label {
+      fill: $primary_hue1;
+    }
+
+    .subLabel {
+      fill: $primary_hue2;
+    }
+  } */
+}

@@ -1,0 +1,65 @@
+@import "~styles/colors";
+@import "~styles/fonts";
+
+.SlideIn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  @include defaultFont;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+
+  .title {
+    margin: 0;
+    padding: 0;
+  }
+
+  .chart {
+    $width: 400px;
+    height: 600px;
+    width: 800px;
+    display: block;
+    margin: auto;
+
+    .disk {
+      stroke-width: 3;
+      stroke: white;
+      fill: transparent;
+      overflow: hidden;
+    }
+
+    .path {
+      // stroke-width: 3;
+      // stroke: red;
+      &.curious {
+        fill: $ternary;
+        // stroke-width: 3;
+        // stroke: $primary_hue1;
+      }
+
+      &.reliable {
+        fill: lighten($ternary, 10%);
+      }
+
+      &.hardWork {
+        fill: $secondary;
+      }
+
+      &.empathic {
+        fill: darken($ternary, 30%);
+      }
+
+      &.ambitious {
+        fill: darken($ternary, 40%);
+      }
+    }
+  }
+
+
+}

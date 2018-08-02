@@ -1,0 +1,23 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb"],
+  "globals": {
+    "fetch": false,
+    "firebase": false
+  },
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "semi": [2, "never"],
+    "indent": ["error", 2],
+    "react/jsx-one-expression-per-line": "never"
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.dev.js"
+      }
+    }
+  }
+}
