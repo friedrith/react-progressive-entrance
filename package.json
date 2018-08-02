@@ -8,10 +8,15 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "examples": "webpack-dev-server --mode development --open --config webpack.config.dev.js",
-    "build": "webpack --mode production --config webpack.config.prod.js"
+    "examples": "webpack-dev-server --mode development --open --config webpack.config.examples.dev.js",
+    "build": "webpack --mode production --config webpack.config.examples.prod.js",
+    "postinstall": "webpack --mode production --config webpack.config.prod.js",
+    "start": "babel-node scripts/demo.js"
   },
   "dependencies": {
+    "@babel/core": "^7.0.0-beta.55",
+    "@babel/node": "^7.0.0-beta.55",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.5",
     "babel-loader": "^7.1.5",
@@ -26,6 +31,7 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.0",
     "eslint-plugin-react": "^7.10.0",
+    "express": "^4.16.3",
     "file-loader": "^1.1.11",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
@@ -43,7 +49,8 @@
     "url-loader": "^1.0.1",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.1.4",
+    "winston": "^3.0.0"
   },
   "devDependencies": {}
 }

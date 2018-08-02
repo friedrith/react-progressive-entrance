@@ -1,12 +1,11 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: path.resolve(__dirname, 'examples/index.jsx'),
   output: {
     publicPath: '/',
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js',
-    libraryTarget: 'umd',
+    path: path.resolve(__dirname, 'build'),
   },
   module: {
     rules: [
@@ -62,6 +61,14 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.scss', '*'],
-    modules: ['node_modules'],
+    modules: ['node_modules', path.resolve(__dirname, 'examples'), path.resolve(__dirname, 'src')],
+    alias: {
+      'react-progressive-entrance': path.resolve(__dirname, 'src/index.js'),
+    },
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, './examples/index.html'),
+    }),
+  ],
 }
