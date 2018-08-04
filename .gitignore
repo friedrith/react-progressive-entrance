@@ -5,3 +5,5 @@ yarn-error.log
 backup
 build
 *.log
+index.html
+main.js
