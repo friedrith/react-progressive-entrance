@@ -6,7 +6,6 @@
   "repository": "git@github.com:friedrith/react-progressive-entrance.git",
   "author": "Thibault Friedrich",
   "license": "MIT",
-  "private": true,
   "scripts": {
     "examples": "webpack-dev-server --mode development --open --config webpack.config.examples.dev.js",
     "build": "webpack --mode production --config webpack.config.examples.prod.js",

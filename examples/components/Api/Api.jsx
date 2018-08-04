@@ -100,6 +100,20 @@ export default () => (
                   but {'don\'t'} hesitate to overload it.
                 </td>
               </tr>
+              <tr>
+                <td>
+                  trigger
+                </td>
+                <td>
+                  string
+                </td>
+                <td>
+                  mount
+                </td>
+                <td className={style.description}>
+                  Define the way the animation will be triggered.
+                </td>
+              </tr>
             </tbody>
           </table>
         </AnimatedItem>

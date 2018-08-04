@@ -12,7 +12,10 @@ class AnimatedGroup extends Component {
   }
 
   componentDidMount() {
-    this.play()
+    const { trigger } = this.props
+    if (trigger === 'mount') {
+      this.play()
+    }
   }
 
   componentWillUnmount() {
@@ -62,6 +65,7 @@ AnimatedGroup.propTypes = {
   children: PropTypes.node.isRequired,
   maxIndex: PropTypes.number,
   pitch: PropTypes.number,
+  trigger: PropTypes.string,
 }
 
 AnimatedGroup.defaultProps = {
@@ -69,6 +73,7 @@ AnimatedGroup.defaultProps = {
   interval: 200,
   maxIndex: 10,
   pitch: 1,
+  trigger: 'mount',
 }
 
 export default AnimatedGroup
