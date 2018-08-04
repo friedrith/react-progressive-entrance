@@ -5,7 +5,7 @@ module.exports = {
   entry: path.resolve(__dirname, 'examples/index.jsx'),
   output: {
     publicPath: '/',
-    path: path.resolve(__dirname, '.'),
+    path: path.resolve(__dirname, 'docs'),
   },
   module: {
     rules: [
