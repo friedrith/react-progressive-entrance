@@ -94,4 +94,12 @@ You can of course add your own animations and refers to it thanks to the propert
 | interval  | number | 200           | It is the minimum timing between 2 animations                                                                                                                                                                                                          |
 | pitch     | number | 1             | After each interval of time, the threshold of the **AnimatedGroup** is incremented by the pitch. Most of the time, this value doesn't need to be changed. However, it may useful when you want to reinsert new items between existing ones.            |
 | maxIndex  | number | 10            | Index maximum that will be animated. It means that items with animationIndex greater than this number won't be animated. For performances reasons, this number is very low by default but don't hesitate to overload it.                               |
-| trigger   | string | mount         | Define the way the animation will be triggered. With the value 'mount', the animation will started as soon as the **AnimatedGroup** is mounted. Otherwise, you can manually trigger the animation using the function **play** of the **AnimatedGroup** |
+| trigger   | string | mount         | Define the way the animation will be triggered. With the value 'mount', the animation will started as soon as the **AnimatedGroup** is mounted. Otherwise, you can manually trigger the animation using the function **play** of the **AnimatedGroup**. |
+
+
+### AnimatedItem
+
+| Property | Type | Default value | Description |
+|----------------|--------|---------------|-----------------------------------------------------------------------------------------------------|
+| animation | string | fade | This value overloads value defined by **AnimatedGroup** only for the current item if it is defined. |
+| animationIndex | number | [required] | The iteration value of the **AnimatedGroup** that will trigger the animation of the current item. |
