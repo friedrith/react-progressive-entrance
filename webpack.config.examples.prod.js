@@ -1,10 +1,13 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
+
+const ROOT_PATH = '/react-progressive-entrance'
 
 module.exports = {
   entry: path.resolve(__dirname, 'examples/index.jsx'),
   output: {
-    publicPath: './',
+    publicPath: ROOT_PATH,
     path: path.resolve(__dirname, 'docs'),
   },
   module: {
@@ -67,6 +70,9 @@ module.exports = {
     },
   },
   plugins: [
+    new webpack.DefinePlugin({
+      ROOT_PATH: `"${ROOT_PATH}"`,
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './examples/index.html'),
     }),

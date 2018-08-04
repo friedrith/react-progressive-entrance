@@ -3,7 +3,8 @@
   "extends": ["airbnb"],
   "globals": {
     "fetch": false,
-    "firebase": false
+    "firebase": false,
+    "ROOT_PATH": true
   },
   "env": {
     "browser": true

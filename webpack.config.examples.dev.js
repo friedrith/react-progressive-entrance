@@ -1,10 +1,13 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
+
+const ROOT_PATH = '/'
 
 module.exports = {
   entry: path.resolve(__dirname, 'examples/index.jsx'),
   output: {
-    publicPath: '/',
+    publicPath: ROOT_PATH,
   },
   module: {
     rules: [
@@ -66,6 +69,9 @@ module.exports = {
     },
   },
   plugins: [
+    new webpack.DefinePlugin({
+      ROOT_PATH: `"${ROOT_PATH}"`,
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './examples/index.html'),
     }),
