@@ -24,11 +24,7 @@ export default () => (
       </AnimatedItem>
       <AnimatedItem animationIndex={6}>
         <div className={style.item}>Item 5</div>
-      </AnimatedItem>
-      <AnimatedItem animationIndex={7}>
         <div className={style.item}>Item 6</div>
-      </AnimatedItem>
-      <AnimatedItem animationIndex={8}>
         <div className={style.item}>Item 7</div>
       </AnimatedItem>
     </AnimatedGroup>
