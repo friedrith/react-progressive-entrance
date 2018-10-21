@@ -1,6 +1,14 @@
 # react-progressive-entrance
 React components to create nice-looking progressive entrance
 
+In comparison with other react libraries
+like [ReactCSSTransitionGroup](https://reactjs.org/docs/animation.html),
+**React-progressive-entrance** uses
+new feature of React 16.3: context. It means that
+you can animate any descending child component of the group and not only
+the first level child.
+It allows you create sophisticated animated entrances more easily.
+
 ## Getting started
 
 > Before installing it, notice that this library only works with **React 16.3+** because it uses the API of context.
@@ -37,6 +45,21 @@ export default = () => (
 
         <AnimatedItem animationIndex="3" animation="slide-left"><!--you can override the animation -->
           <span>Item 1</span>
+        </AnimatedItem>
+
+        <!-- if you put several html elements in an AnimatedItem, it will automatically
+          -- create AnimatedItem for each element
+          -->
+        <AnimatedItem animationIndex="3" >
+          <span>Item 1</span>
+          <span>Item 2</span>
+        </AnimatedItem>
+        <!-- is equivalent to -->
+        <AnimatedItem animationIndex="3" >
+          <span>Item 1</span>
+        </AnimatedItem>
+        <AnimatedItem animationIndex="4" >
+          <span>Item 2</span>
         </AnimatedItem>
       </div>
     </AnimatedGroup>

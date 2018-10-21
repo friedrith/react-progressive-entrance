@@ -1,6 +1,6 @@
 {
   "name": "react-progressive-entrance",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "React components to create nice-looking progressive entrance",
   "main": "dist/index.js",
   "repository": "git@github.com:friedrith/react-progressive-entrance.git",

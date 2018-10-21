@@ -10,7 +10,7 @@ const AnimatedItem = ({ children, animation: childAnimation, animationIndex }) =
       .map((child, index) => {
         const animation = childAnimation || parentAnimation
         let newClassName = `${child.props.className ? child.props.className : ''} ${animation}-enter`
-        if (animationIndex <= currentStep) {
+        if (animationIndex + index <= currentStep) {
           newClassName = `${newClassName} ${animation}-enter-active`
         }
         const properties = {
