@@ -85,23 +85,6 @@ export default () => (
               </tr>
               <tr>
                 <td>
-                  maxIndex
-                </td>
-                <td>
-                  number
-                </td>
-                <td>
-                  10
-                </td>
-                <td className={style.description}>
-                  Index maximum that will be animated. It means that items with
-                  animationIndex greater that this number {'won\'t'} be animated.
-                  For performances reasons, this number is very low by default
-                  but {'don\'t'} hesitate to overload it.
-                </td>
-              </tr>
-              <tr>
-                <td>
                   trigger
                 </td>
                 <td>
@@ -147,7 +130,7 @@ export default () => (
                   string
                 </td>
                 <td>
-                  fade
+                  null
                 </td>
                 <td className={style.description}>
                   This value overloads values defined by the <strong>AnimatedGroup</strong> only
@@ -156,17 +139,19 @@ export default () => (
               </tr>
               <tr>
                 <td>
-                  animationIndex
+                  index
                 </td>
                 <td>
-                  number
+                  number/string
                 </td>
                 <td>
-                  / (required)
-                </td>
+                  'auto'
+                </td>If set to 'auto', the nodes
+                  will be displayed according to the order they are mounted into the DOM.
                 <td className={style.description}>
                   The iteration value of the <strong>AnimatedGroup</strong> that will
-                  trigger the animation of the current item.
+                  trigger the animation of the current item. If set to 'auto', the nodes
+                  will be displayed according to the order they are mounted into the DOM.
                 </td>
               </tr>
             </tbody>

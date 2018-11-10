@@ -10,6 +10,7 @@ import GettingStarted from '../GettingStarted'
 import VariousSpeeds from '../VariousSpeeds'
 import VariousAnimations from '../VariousAnimations'
 import Sophisticated from '../Sophisticated'
+import CustomOrder from '../CustomOrder'
 import Api from '../Api'
 
 // import {
@@ -66,6 +67,7 @@ class App extends Component {
             <Route exact path="/various-speeds" component={VariousSpeeds} />
             <Route exact path="/various-animations" component={VariousAnimations} />
             <Route exact path="/sophisticated" component={Sophisticated} />
+            <Route exact path="/custom-order" component={CustomOrder} />
             <Route exact path="/api" component={Api} />
           </Switch>
         </div>

@@ -4,7 +4,7 @@ React components to create nice-looking progressive entrance
 In comparison with other react libraries
 like [ReactCSSTransitionGroup](https://reactjs.org/docs/animation.html),
 **React-progressive-entrance** uses
-new feature of React 16.3: context. It means that
+new feature of React 16.6: context. It means that
 you can animate any descending child component of the group and not only
 the first level child.
 It allows you create sophisticated animated entrances more easily.
@@ -83,24 +83,22 @@ You also need to define your class in your stylesheet
 
 /* for slide from left animation */
 .slide-left-enter { /* before animation */
-  position: relative;
-  right: 2000px;
+  transform: translateX(-2000px);
 }
 
 .slide-left-enter-active { /* after animation */
-  right: 0px;
-  transition: right 700ms ease-out;
+  transform: translateX(0);
+  transition: transform 700ms ease-out;
 }
 
 /* for slide from right animation */
 .slide-right-enter { /* before animtion */
-  position: relative;
-  left: 2000px;
+  transform: translateX(2000px);
 }
 
 .slide-right-enter-active { /* after animation */
-  left: 0px;
-  transition: left 700ms ease-out;
+  transform: translateX(0);
+  transition: transform 700ms ease-out;
 }
 
 ```
@@ -116,7 +114,6 @@ You can of course add your own animations and refers to it thanks to the propert
 | animation | string | fade          | The animation when the components appear. Only **fade**, **slide-left** and **slide-right** natively exists but you can add your own animations.                                                                                                       |
 | interval  | number | 200           | It is the minimum timing between 2 animations                                                                                                                                                                                                          |
 | pitch     | number | 1             | After each interval of time, the threshold of the **AnimatedGroup** is incremented by the pitch. Most of the time, this value doesn't need to be changed. However, it may useful when you want to reinsert new items between existing ones.            |
-| maxIndex  | number | 10            | Index maximum that will be animated. It means that items with animationIndex greater than this number won't be animated. For performances reasons, this number is very low by default but don't hesitate to overload it.                               |
 | trigger   | string | mount         | Define the way the animation will be triggered. With the value 'mount', the animation will started as soon as the **AnimatedGroup** is mounted. Otherwise, you can manually trigger the animation using the function **play** of the **AnimatedGroup**. |
 
 
@@ -125,4 +122,20 @@ You can of course add your own animations and refers to it thanks to the propert
 | Property | Type | Default value | Description |
 |----------------|--------|---------------|-----------------------------------------------------------------------------------------------------|
 | animation | string | fade | This value overloads value defined by **AnimatedGroup** only for the current item if it is defined. |
-| animationIndex | number | [required] | The iteration value of the **AnimatedGroup** that will trigger the animation of the current item. |
+| index | number/string | 'auto' | The iteration value of the **AnimatedGroup** that will trigger the animation of the current item. If set to 'auto', the nodes will be displayed according to the order they are mounted into the DOM. |
+
+## Changelog
+
+### Version 0.4.0
+
+* maxIndex is now set up automatically
+* create a 'auto' value for index
+* rename `animationIndex` for `index`
+
+### Version 0.3.0
+
+* Several nodes children of a `AnimatedItem` are now displayed progressively
+
+### Version 0.2.0
+
+* Release of the first version

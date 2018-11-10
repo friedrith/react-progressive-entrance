@@ -6,9 +6,18 @@ import Context from './Context'
 class AnimatedGroup extends Component {
   constructor(props) {
     super(props)
+    this.registerChild = this.registerChild.bind(this)
+
     this.state = {
       currentStep: 0,
     }
+
+    const { pitch } = this.props
+
+    this.maxIndex = pitch
+    this.nextIndexForAuto = 1
+
+    this.chidren = {}
   }
 
   componentDidMount() {
@@ -25,6 +34,18 @@ class AnimatedGroup extends Component {
     }
   }
 
+  registerChild(id, index, childrenCount) {
+    let nextIndex = index
+    if (index === 'auto') {
+      nextIndex = this.nextIndexForAuto
+      this.nextIndexForAuto = this.nextIndexForAuto + childrenCount
+    }
+
+    this.maxIndex = Math.max(this.maxIndex, nextIndex + childrenCount)
+
+    return nextIndex
+  }
+
   play() {
     const { interval } = this.props
     if (this.timeout) {
@@ -35,13 +56,15 @@ class AnimatedGroup extends Component {
       currentStep: 0,
     })
     this.timeout = setInterval(() => {
-      const { currentStep } = this.state
-      const { maxIndex, pitch } = this.props
+      let { currentStep } = this.state
+      const { pitch } = this.props
+      currentStep += pitch
       this.setState({
-        currentStep: currentStep + pitch,
+        currentStep,
       })
 
-      if (currentStep === maxIndex) {
+
+      if (currentStep === this.maxIndex) {
         clearInterval(this.timeout)
         this.timeout = null
       }
@@ -50,9 +73,14 @@ class AnimatedGroup extends Component {
 
   render() {
     const { currentStep } = this.state
-    const { children, maxIndex, animation } = this.props
+    const { children, animation } = this.props
     return (
-      <Context.Provider value={{ currentStep, maxIndex, animation }}>
+      <Context.Provider value={{
+        currentStep,
+        animation,
+        register: this.registerChild,
+      }}
+      >
         {children}
       </Context.Provider>
     )
@@ -60,10 +88,15 @@ class AnimatedGroup extends Component {
 }
 
 AnimatedGroup.propTypes = {
-  animation: PropTypes.string,
+  animation: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({
+      enter: PropTypes.string,
+      enterActive: PropTypes.string,
+    }),
+  ]),
   interval: PropTypes.number,
   children: PropTypes.node.isRequired,
-  maxIndex: PropTypes.number,
   pitch: PropTypes.number,
   trigger: PropTypes.string,
 }
@@ -71,7 +104,6 @@ AnimatedGroup.propTypes = {
 AnimatedGroup.defaultProps = {
   animation: 'fade',
   interval: 200,
-  maxIndex: 10,
   pitch: 1,
   trigger: 'mount',
 }

@@ -10,20 +10,18 @@
   }
 
   .slide-left-enter {
-    position: relative;
-    right: 2000px;
+    transform: translateX(-2000px);
     &.slide-left-enter-active {
-      right: 0px;
-      transition: right 700ms ease-out;
+      transform: translateX(0px);
+      transition: transform 700ms ease-out;
     }
   }
 
   .slide-right-enter {
-    position: relative;
-    left: 2000px;
+    transform: translateX(2000px);
     &.slide-right-enter-active {
-      left: 0px;
-      transition: left 700ms ease-out;
+      transform: translateX(0px);
+      transition: transform 700ms ease-out;
     }
   }
 }
