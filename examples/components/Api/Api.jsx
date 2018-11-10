@@ -146,8 +146,7 @@ export default () => (
                 </td>
                 <td>
                   'auto'
-                </td>If set to 'auto', the nodes
-                  will be displayed according to the order they are mounted into the DOM.
+                </td>
                 <td className={style.description}>
                   The iteration value of the <strong>AnimatedGroup</strong> that will
                   trigger the animation of the current item. If set to 'auto', the nodes
