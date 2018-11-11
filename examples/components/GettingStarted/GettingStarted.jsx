@@ -53,7 +53,7 @@ const code3 = `<AnimatedGroup animation="fade">
 
 export default () => (
   <div className={style.GettingStarted}>
-    <AnimatedGroup interval={350} animation={null}>
+    <AnimatedGroup interval={350}>
       <AnimatedItem>
         <h1 className={style.title}>Progressive Entrance</h1>
         <h2 className={style.subtitle}>For React 16.6+</h2>
