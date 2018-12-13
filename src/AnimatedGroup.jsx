@@ -42,35 +42,6 @@ class AnimatedGroup extends Component {
   }
 
   /**
-   * registers a child animated item. It MAY increase the maximum index of the clock
-   * and allocate an new index if the child index is specified as automatic
-   * @param id <number> id of the children animated item. It is not used for now.
-   * @param specifiedIndex <number|string> order of entrance of the children
-   *      animated item. If set to true, the index is defined by the group instead
-   * @param childrenCount <number> number of children in the child animated item
-   * @return the index that the child item should use to display itself.
-   *      It returns the index given in parameter if it is not set to automatic.
-   *      Otherwise, it returns a computed index that the children item should use
-   */
-  registerChild(id, specifiedIndex = 'auto', childrenCount = 0) {
-    let computedIndex = specifiedIndex
-    if (specifiedIndex === 'auto') {
-      // if the specified index is not a number but equals to 'auto',
-      // the parent chooses the index
-      computedIndex = this.nextAutoIndex
-      // prepare the index for the next item that chosed automatic allocation.
-      // the next will have the index of this one (and the children of this one)
-      const { pitch } = this.props
-      this.nextAutoIndex += childrenCount * pitch
-    }
-
-    // if the new index if bigger than current maximum index, we update the maximum index
-    this.maxIndex = Math.max(this.maxIndex, computedIndex + childrenCount)
-
-    return computedIndex
-  }
-
-  /**
    * starts the clock
    */
   play() {
@@ -107,6 +78,35 @@ class AnimatedGroup extends Component {
       clearInterval(this.timeout)
       this.timeout = null
     }
+  }
+
+  /**
+   * registers a child animated item. It MAY increase the maximum index of the clock
+   * and allocate an new index if the child index is specified as automatic
+   * @param id <number> id of the children animated item. It is not used for now.
+   * @param specifiedIndex <number|string> order of entrance of the children
+   *      animated item. If set to true, the index is defined by the group instead
+   * @param childrenCount <number> number of children in the child animated item
+   * @return the index that the child item should use to display itself.
+   *      It returns the index given in parameter if it is not set to automatic.
+   *      Otherwise, it returns a computed index that the children item should use
+   */
+  registerChild(id, specifiedIndex = 'auto', childrenCount = 0) {
+    let computedIndex = specifiedIndex
+    if (specifiedIndex === 'auto') {
+      // if the specified index is not a number but equals to 'auto',
+      // the parent chooses the index
+      computedIndex = this.nextAutoIndex
+      // prepare the index for the next item that chosed automatic allocation.
+      // the next will have the index of this one (and the children of this one)
+      const { pitch } = this.props
+      this.nextAutoIndex += childrenCount * pitch
+    }
+
+    // if the new index if bigger than current maximum index, we update the maximum index
+    this.maxIndex = Math.max(this.maxIndex, computedIndex + childrenCount)
+
+    return computedIndex
   }
 
   render() {
